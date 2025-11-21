@@ -63,9 +63,11 @@ def tampilkan_hasil(nama, umur, waktu_pakai, total_soal, jawaban_user, soal_dipa
         kunci = soal.get("kunci", "-")
         print(f"  SoalID {sid}: {user_jaw} -> {kunci}")
 
+    direktori_skrip = os.path.dirname(os.path.abspath(sys.argv[0]))
+    nama_file = os.path.join(direktori_skrip, f"hasil_tes_iq_{nama.replace(' ', '_')}.txt")
+    
     # Simpan hasil ke file
     try:
-        nama_file = f"hasil_tes_iq_{nama.replace(' ', '_')}.txt"
         with open(nama_file, "w", encoding="utf-8") as f:
             f.write("====================================================================================================\n")
             f.write("Hasil Tes IQ\n")
@@ -3196,7 +3198,7 @@ while True:
     soal_dipakai = random.sample(soal_list, jumlah_soal_ambil)
 
     # SETTING WAKTU (1 JAM)
-    BATAS_WAKTU = 0.1 * 60  
+    BATAS_WAKTU = 60 * 60  
     
     jawaban_user = {}
     skor = 0
